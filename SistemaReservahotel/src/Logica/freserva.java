@@ -45,7 +45,8 @@ public class freserva {
                "(select apaterno from persona where idpersona=r.idtrabajador)as trabajadorap,"+
                "r.tipo_reserva,r.fecha_reserva,r.fec"
                + "ha_ingresa,r.fecha_salida,"+
-               "r.costo_alojamiento,r.estado from reserva r inner join habitacion h on r.idhabitacion=h.idhabitacion where r.fecha_reserva like '%"+ buscar + "%' order by idreserva desc";
+               "r.costo_alojamiento,r.estado from reserva r inner join habitacion h on r.idhabitacion=h.idhabitacion "
+               + "where r.fecha_reserva like '%"+ buscar + "%' order by idreserva desc";
        
        try {
            Statement st= cn.createStatement();
