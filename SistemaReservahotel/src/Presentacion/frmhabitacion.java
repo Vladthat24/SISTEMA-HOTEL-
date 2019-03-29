@@ -20,9 +20,7 @@ public class frmhabitacion extends javax.swing.JInternalFrame {
         initComponents();
         mostrar("");
         inhabilitar();
-        
-        
-        
+
     }
 
     private String accion = "guardar";
@@ -477,62 +475,52 @@ public class frmhabitacion extends javax.swing.JInternalFrame {
 
         dts.setDescripcion(txtdescripcion.getText());
         dts.setCaracteristicas(txtcaracteristicas.getText());
-        
+
         dts.setPrecio_diario(Double.parseDouble(txtprecio_diario.getText()));
-        
+
         seleccionado = cboestado.getSelectedIndex();
         dts.setEstado((String) cboestado.getItemAt(seleccionado));
-        
+
         seleccionado = cbotipo_habitacion.getSelectedIndex();
         dts.setTipo_habitacion((String) cbotipo_habitacion.getItemAt(seleccionado));
-        
-        
+
         if (accion.equals("guardar")) {
             if (func.insertar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "La habitación fue registrada satisfactoriamente");
                 mostrar("");
-               inhabilitar();
-                
+                inhabilitar();
+
             }
-            
-            
-            
-            
-        }
-        else if (accion.equals("editar")){
+
+        } else if (accion.equals("editar")) {
             dts.setIdhabitacion(Integer.parseInt(txtidhabitacion.getText()));
-            
-            
+
             if (func.editar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "La habitación fue Editada satisfactoriamente");
                 mostrar("");
                 inhabilitar();
             }
         }
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
         if (!txtidhabitacion.getText().equals("")) {
-            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Estás seguro de Eliminar la Habitación?","Confirmar",2);
-            
-            if (confirmacion==0) {
-                fhabitacion func = new fhabitacion ();
-                vhabitacion dts= new vhabitacion();
-                
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Estás seguro de Eliminar la Habitación?", "Confirmar", 2);
+
+            if (confirmacion == 0) {
+                fhabitacion func = new fhabitacion();
+                vhabitacion dts = new vhabitacion();
+
                 dts.setIdhabitacion(Integer.parseInt(txtidhabitacion.getText()));
                 func.eliminar(dts);
                 mostrar("");
                 inhabilitar();
-                
+
             }
-            
-            
+
         }
     }//GEN-LAST:event_btneliminarActionPerformed
 
@@ -548,7 +536,7 @@ public class frmhabitacion extends javax.swing.JInternalFrame {
 
     private void cbopisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbopisoActionPerformed
         // TODO add your handling code here:
-       cbopiso.transferFocus();
+        cbopiso.transferFocus();
     }//GEN-LAST:event_cbopisoActionPerformed
 
     private void txtprecio_diarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecio_diarioActionPerformed
@@ -571,31 +559,28 @@ public class frmhabitacion extends javax.swing.JInternalFrame {
         btnguardar.setText("Editar");
         habilitar();
         btneliminar.setEnabled(true);
-        accion="editar";
-        
+        accion = "editar";
+
         int fila = tablalistado.rowAtPoint(evt.getPoint());
-        
+
         txtidhabitacion.setText(tablalistado.getValueAt(fila, 0).toString());
         txtnumero.setText(tablalistado.getValueAt(fila, 1).toString());
-        
-       cbopiso.setSelectedItem(tablalistado.getValueAt(fila, 2).toString());
-       txtdescripcion.setText(tablalistado.getValueAt(fila, 3).toString());
-       txtcaracteristicas.setText(tablalistado.getValueAt(fila, 4).toString());
+
+        cbopiso.setSelectedItem(tablalistado.getValueAt(fila, 2).toString());
+        txtdescripcion.setText(tablalistado.getValueAt(fila, 3).toString());
+        txtcaracteristicas.setText(tablalistado.getValueAt(fila, 4).toString());
         txtprecio_diario.setText(tablalistado.getValueAt(fila, 5).toString());
-        
+
         cboestado.setSelectedItem(tablalistado.getValueAt(fila, 6).toString());
         cbotipo_habitacion.setSelectedItem(tablalistado.getValueAt(fila, 7).toString());
-        
-       
-       
-       
-        
+
+
     }//GEN-LAST:event_tablalistadoMouseClicked
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        
+
     }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
